@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Coaster
   - Drink
+  - Table
+  - Customer
   layers:
   - Default
   - TransparentFX
