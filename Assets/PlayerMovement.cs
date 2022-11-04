@@ -38,6 +38,17 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+
+            if(Input.GetKey("y")){
+                Debug.Log("ON");
+                CustomerMovement.waitBoolean = true; } 
+        if(Input.GetKey("u")){ 
+            Debug.Log("OFF");
+            CustomerMovement.waitBoolean = false;
+        }
+
+
+
     }
 
     //Fixed update is very reliable at 50 frames per second every single time. 
