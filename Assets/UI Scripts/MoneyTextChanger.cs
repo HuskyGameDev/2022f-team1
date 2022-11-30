@@ -7,11 +7,15 @@ using TMPro;
 public class MoneyTextChanger : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI myTextElement;
-   public int moneyTracker = 0;
-
-    public void TempMoneyGain()
+   public int moneyTracker;
+    void Start()
     {
-        moneyTracker = moneyTracker + 10;
+        moneyTracker = MoneyVariableStorage.money;
+        myTextElement.text = "Money=" + moneyTracker;
+    }
+    public void TempMoneyGainText()
+    {
+        moneyTracker = MoneyVariableStorage.money;
         myTextElement.text = "Money=" + moneyTracker;
     }
 }
