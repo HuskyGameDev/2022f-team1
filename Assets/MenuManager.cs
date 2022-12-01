@@ -9,6 +9,8 @@ public class MenuManager : MonoBehaviour
     
     public void StartGame()
     {
+        gameStartScene = 0;
+
         SceneManager.LoadScene(gameStartScene);
     }
 
