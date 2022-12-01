@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f4137f501e2c24c9bbfc39cd623ba2, type: 3}
-  m_Name: CheeseBurger
+  m_Script: {fileID: 11500000, guid: e83702c228befcc498eb6051286946f3, type: 3}
+  m_Name: Employee3
   m_EditorClassIdentifier: 
-  title: Cheeseburger
-  description: Wait I thought we served only drinks?
-  baseCost: 10
+  employeeName: Employee 3
+  employeeDescription: Employee 3 Description
+  HireCost: 60

@@ -5,13 +5,7 @@ using TMPro;
 
 public class EmployeeTemplateScript : MonoBehaviour
 {
-    public TMP_Text leftNameTxt;
-    public TMP_Text leftDescriptionTxt;
-    public TMP_Text leftCostTxt;
-
-    public TMP_Text rightNameTxt;
-    public TMP_Text rightDescriptionTxt;
-    public TMP_Text rightCostTxt;
-
-    public GameObject rightEmployee;
+    public TMP_Text employeeNameTxt;
+    public TMP_Text employeeDescriptionTxt;
+    public TMP_Text employeeCostTxt;
 }

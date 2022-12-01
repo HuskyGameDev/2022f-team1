@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f4137f501e2c24c9bbfc39cd623ba2, type: 3}
-  m_Name: StudentLoans
+  m_Script: {fileID: 11500000, guid: e83702c228befcc498eb6051286946f3, type: 3}
+  m_Name: Employee5
   m_EditorClassIdentifier: 
-  title: Paying Off Student Debt
-  description: HA HA HA, No.
-  baseCost: 2147483647
+  employeeName: Employee 5
+  employeeDescription: Employee 5 Description
+  HireCost: 100

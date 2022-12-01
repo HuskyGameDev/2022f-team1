@@ -13,8 +13,8 @@ public class EmployeeManager : MonoBehaviour
     public EmployeeSO[] employeeSO;
     public GameObject[] employeePanelsGO;
     public EmployeeTemplateScript[] employeePanels;
-    public Button[] leftHireBtns;
-    public Button[] rightHireBtns;
+    public Button[] myHireBtns;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +22,6 @@ public class EmployeeManager : MonoBehaviour
         for (int i = 0; i < employeeSO.Length; i++)
         {
             employeePanelsGO[i].SetActive(true);
-            if (employeeSO[i].hasRight != true)
-            {
-                employeePanels[i].rightEmployee.SetActive(false);
-            }
         }
 
             currentMoney = MoneyVariableStorage.money;
@@ -46,45 +42,22 @@ public class EmployeeManager : MonoBehaviour
     {
         for(int i=0; i < employeeSO.Length; i++)
         {
-            if(currentMoney >= employeeSO[i].leftHireCost)
+            if(currentMoney >= employeeSO[i].HireCost)
             {
-                leftHireBtns[i].interactable = true;
+                myHireBtns[i].interactable = true;
             }
             else
             {
-                leftHireBtns[i].interactable = false;
-            }
-
-            if (employeeSO[i].hasRight)
-            {
-                if (currentMoney >= employeeSO[i].rightHireCost)
-                {
-                    rightHireBtns[i].interactable = true;
-                }
-                else
-                {
-                    rightHireBtns[i].interactable = false;
-                }
+                myHireBtns[i].interactable = false;
             }
         }
     }
 
-    public void HireLeftEmployee(int btnNo)
+    public void HireEmployee(int btnNo)
     {
-        if(currentMoney >= employeeSO[btnNo].leftHireCost)
+        if(currentMoney >= employeeSO[btnNo].HireCost)
         {
-            MoneyVariableStorage.money = MoneyVariableStorage.money - employeeSO[btnNo].leftHireCost;
-            currentMoney = MoneyVariableStorage.money;
-            employeeMoneyUI.text = "Money = " + currentMoney.ToString();
-            CheckHireable();
-        }
-    }
-
-    public void HireRightEmployee(int btnNo)
-    {
-        if (currentMoney >= employeeSO[btnNo].rightHireCost)
-        {
-            MoneyVariableStorage.money = MoneyVariableStorage.money - employeeSO[btnNo].rightHireCost;
+            MoneyVariableStorage.money = MoneyVariableStorage.money - employeeSO[btnNo].HireCost;
             currentMoney = MoneyVariableStorage.money;
             employeeMoneyUI.text = "Money = " + currentMoney.ToString();
             CheckHireable();
@@ -95,13 +68,9 @@ public class EmployeeManager : MonoBehaviour
     {
         for (int i = 0; i < employeeSO.Length; i++)
         {
-            employeePanels[i].leftNameTxt.text = employeeSO[i].leftName;
-            employeePanels[i].leftDescriptionTxt.text = employeeSO[i].leftDescription;
-            employeePanels[i].leftCostTxt.text = "Buy: " + employeeSO[i].leftHireCost.ToString();
-
-            employeePanels[i].rightNameTxt.text = employeeSO[i].rightName;
-            employeePanels[i].rightDescriptionTxt.text = employeeSO[i].rightDescription;
-            employeePanels[i].rightCostTxt.text = "Buy: " + employeeSO[i].rightHireCost.ToString();
+            employeePanels[i].employeeNameTxt.text = employeeSO[i].employeeName;
+            employeePanels[i].employeeDescriptionTxt.text = employeeSO[i].employeeDescription;
+            employeePanels[i].employeeCostTxt.text = "Buy: " + employeeSO[i].HireCost.ToString();
         }
     }
 }
