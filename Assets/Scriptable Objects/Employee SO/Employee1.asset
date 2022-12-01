@@ -10,12 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e83702c228befcc498eb6051286946f3, type: 3}
-  m_Name: Employee 7
+  m_Name: Employee1
   m_EditorClassIdentifier: 
-  leftName: Employee 7
-  leftDescription: This is the Description of Employee 7
-  leftHireCost: 70
-  hasRight: 0
-  rightName: 
-  rightDescription: 
-  rightHireCost: 0
+  employeeName: Employee 1
+  employeeDescription: Employee 1 Description
+  HireCost: 20
