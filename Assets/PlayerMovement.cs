@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-
+/*
             if(Input.GetKey("y")){
                 Debug.Log("ON");
                 CustomerMovement.waitBoolean = true; } 
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             CustomerMovement.waitBoolean = false;
         }
 
-
+*/
 
     }
 
