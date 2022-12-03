@@ -18,17 +18,16 @@ public class Station : MonoBehaviour
   public Station[] paths;
 
   public int waitTime = 3;
-  public int maxCapacity = 1;
-  public int currCapacity = 0;
 
-  public bool tableOccupied = false;
+  public bool occupied = false;
+  public bool hasOccupancyCap = false;
 
   
 // The change capacity is used when leaving or going to tables/paths. It changes the capacity of it so multiple customers don't sit at the same table.
-public void changeCapacity(int value) { currCapacity += value; } 
+public void changeCapacity(bool value) { occupied = value; } 
 
 //A boolean to check if the current capacity is at or exceeding the maximum capacity set on the node. 
-public bool atCapacity() { return currCapacity >= maxCapacity; } 
+public bool atCapacity() { return hasOccupancyCap ? occupied : false; } 
 
 
   //Draws the red circles onto the Stations, and the red lines onto the Paths.
