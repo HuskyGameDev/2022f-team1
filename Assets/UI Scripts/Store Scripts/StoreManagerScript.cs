@@ -21,8 +21,8 @@ public class StoreManagerScript : MonoBehaviour
         for (int i = 0; i < storeItemSO.Length; i++)
             storePanelsGO[i].SetActive(true);
 
-        currentMoney = MoneyVariableStorage.money;
-        storeMoneyUI.text = "Money = " + MoneyVariableStorage.money;
+        currentMoney = VariableStorage.money;
+        storeMoneyUI.text = "Money = " + VariableStorage.money;
         LoadPanels();
         CheckPurchaseable();
     }
@@ -54,8 +54,8 @@ public class StoreManagerScript : MonoBehaviour
     {
         if (currentMoney >= storeItemSO[btnNo].baseCost)
         {
-            MoneyVariableStorage.money = MoneyVariableStorage.money - storeItemSO[btnNo].baseCost;
-            currentMoney = MoneyVariableStorage.money;
+            VariableStorage.money = VariableStorage.money - storeItemSO[btnNo].baseCost;
+            currentMoney = VariableStorage.money;
             storeMoneyUI.text = "Money = " + currentMoney.ToString();
             CheckPurchaseable();
         }

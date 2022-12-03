@@ -24,8 +24,8 @@ public class EmployeeManager : MonoBehaviour
             employeePanelsGO[i].SetActive(true);
         }
 
-            currentMoney = MoneyVariableStorage.money;
-        employeeMoneyUI.text = "Money = " + MoneyVariableStorage.money;
+            currentMoney = VariableStorage.money;
+        employeeMoneyUI.text = "Money = " + VariableStorage.money;
         LoadPanels();
         CheckHireable();
     }
@@ -57,8 +57,8 @@ public class EmployeeManager : MonoBehaviour
     {
         if(currentMoney >= employeeSO[btnNo].HireCost)
         {
-            MoneyVariableStorage.money = MoneyVariableStorage.money - employeeSO[btnNo].HireCost;
-            currentMoney = MoneyVariableStorage.money;
+            VariableStorage.money = VariableStorage.money - employeeSO[btnNo].HireCost;
+            currentMoney = VariableStorage.money;
             employeeMoneyUI.text = "Money = " + currentMoney.ToString();
             CheckHireable();
         }
