@@ -7,17 +7,23 @@ public class DrinkLogic : MonoBehaviour
 {
 
     
+    public PlayerMovement playerMovement;
     public DrinkRequest drinkQue;
     public Transform hand, coaster;
     public Transform drink;
     public Animator animator;
     
+    public float drinkReach = 1.5f;
+
+    public KeyCode pickUpKey = KeyCode.O, putDownKey = KeyCode.P;
+
     public List<GameObject> coasterList = new List<GameObject>();
     public List<GameObject> drinkList = new List<GameObject>();
 
   
     void Start(){
 
+        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         coasterList = GameObject.FindGameObjectsWithTag("Coaster").ToList();
         drinkList = GameObject.FindGameObjectsWithTag("Drink").ToList();
         //Debug.Log(coasterList[0]);
@@ -29,18 +35,16 @@ public class DrinkLogic : MonoBehaviour
 
     void FixedUpdate(){
 
-        if(Input.GetKey("p")){
-            if(animator.GetBool("holdingDrink") && closeEnough()){
-                animator.SetBool("holdingDrink",false);
+        if(Input.GetKey(putDownKey)){
+            if(playerMovement.holdingDrink && closeEnough()){
                 ToggleDrinkPosition();
             }
 
             
         }
 
-        if(Input.GetKey("o")){
-            if((animator.GetBool("holdingDrink") == false) && closeEnough()){
-                animator.SetBool("holdingDrink",true);
+        if(Input.GetKey(pickUpKey)){
+            if(!playerMovement.holdingDrink && closeEnough()){
                 ToggleDrinkPosition();
             }
 
@@ -52,10 +56,13 @@ public class DrinkLogic : MonoBehaviour
 
     void ToggleDrinkPosition() {
 
-        if (animator.GetBool("holdingDrink"))
+        if (!playerMovement.holdingDrink) {
             closestDrink().transform.parent = hand;
-        else
-            closestDrink().transform.parent = closestCoaster().transform; ///////
+            playerMovement.holdingDrink = true;
+        } else {
+            closestDrink().transform.parent = closestCoaster().transform;
+            playerMovement.holdingDrink = false;
+        }
 
         closestDrink().transform.localPosition = Vector3.zero;
         closestDrink().transform.localScale = Vector3.one;
@@ -63,7 +70,7 @@ public class DrinkLogic : MonoBehaviour
 
     bool closeEnough(){
 
-        if (Vector3.Distance (hand.position, closestCoaster().transform.position) < 1) { return true; } 
+        if (Vector3.Distance (hand.position, closestCoaster().transform.position) < drinkReach) { return true; } 
         else{  return false; } 
     }
 

@@ -9,8 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     
-
-    [SerializeField] bool holdingDrink;
+    public bool holdingDrink;
 
     Vector2 movement;
 
@@ -28,15 +27,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Vertical", movement.y);
         }
         animator.SetFloat("Speed", movement.sqrMagnitude);
-
-
-        if(Input.GetKey("k")){
-            if(animator.GetBool("holdingDrink") == false){
-                animator.SetBool("holdingDrink",true);
-            } else{
-            animator.SetBool("holdingDrink",false);
-            }
-        }
 
 /*
             if(Input.GetKey("y")){

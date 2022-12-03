@@ -32,11 +32,14 @@ private DrinkRequest e;
 
 
 
-void Start(){
+void Start() {
 
 e = GetComponent<DrinkRequest>();
 
-currentPosition.changeCapacity(1); 
+if (currentPosition == null)
+    currentPosition = GameObject.Find("entranceWaypoint").GetComponent<Station>();
+
+currentPosition.changeCapacity(true); 
 this.transform.position = currentPosition.transform.position; 
 
 waiting = true;
@@ -59,8 +62,8 @@ StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier));
                 if(leaving){
                     if(!currentPosition.parent.atCapacity()){
                         targetPosition = currentPosition.parent;
-                        currentPosition.changeCapacity(-1);
-                        targetPosition.changeCapacity(1); //Premptively calls which space it wants and changes the capacity before it arrives.
+                        currentPosition.changeCapacity(false);
+                        targetPosition.changeCapacity(true); //Premptively calls which space it wants and changes the capacity before it arrives.
                         neededDistance = Vector3.Distance(currentPosition.transform.position, targetPosition.transform.position);
                     }
                 }
@@ -73,10 +76,10 @@ StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier));
 
                      if(!table.atCapacity()) {
                         targetPosition = table;             //Table search and grab.
-                        targetPosition.tableOccupied = true;
+                        targetPosition.occupied = true;
 
-                        currentPosition.changeCapacity(-1); //Change to boolean table system here and below. 
-                        targetPosition.changeCapacity(1);
+                        currentPosition.changeCapacity(false); //Change to boolean table system here and below. 
+                        targetPosition.changeCapacity(true);
                         neededDistance = Vector3.Distance(currentPosition.transform.position, targetPosition.transform.position);
                         break;
                      }
@@ -87,10 +90,10 @@ StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier));
                     foreach(Station path in currentPosition.paths) {
                         if(!path.atCapacity()) {
                             targetPosition = path;          
-                            currentPosition.tableOccupied = false;
+                            currentPosition.occupied = false;
 
-                            currentPosition.changeCapacity(-1);
-                            targetPosition.changeCapacity(1);
+                            currentPosition.changeCapacity(false);
+                            targetPosition.changeCapacity(true);
                             neededDistance = Vector3.Distance(currentPosition.transform.position, targetPosition.transform.position);
                             break;
 
@@ -117,27 +120,26 @@ StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier));
         this.transform.position = targetPosition.transform.position;
         currentPosition = targetPosition;
 
-              targetPosition = null;
-            moving = false; 
-            waiting = true;
-           
+        targetPosition = null;
+        moving = false; 
+        waiting = true;
 
-            //If I hit the parent, or the table/end of the paths, then the leaving variable flips. 
-             if(currentPosition.parent == null || (currentPosition.tables.Length == 0 && currentPosition.paths.Length == 0)){   
-              //  waiting = true;
-                leaving = !leaving;  
-                waitBoolean = true;
-                e.RequestBlue();
-                }
-                else{
-                    StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier)); 
-                }
-
-          
+        //If I hit the parent, or the table/end of the paths, then the leaving variable flips. 
+        if((currentPosition.tables.Length == 0 && currentPosition.paths.Length == 0)){   
             
-        
+            leaving = !leaving;  
+            waitBoolean = true;
+            e.RequestBlue();
 
-        
+        } else if(currentPosition.parent == null) {
+
+            CustomerManager.Instance.RemoveCustomer(gameObject);
+            Destroy(gameObject);
+
+        } else {
+                
+            StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier)); 
+        }        
     }
     //End of update()
     }

@@ -5,33 +5,33 @@ using UnityEngine;
 public class DrinkRequest : MonoBehaviour
 {
 
-    public CustomerMovement custmov;
+    private CustomerMovement custmov;
   
 
     [SerializeField] public GameObject bubblePrefab;
 
-     [SerializeField] public GameObject customer;
+    [SerializeField] public GameObject customer;
 
+    private GameObject request;
 
 
 
     public void RequestBlue(){
 
-         GameObject request = Instantiate(bubblePrefab);
+        request = Instantiate(bubblePrefab);
         request.transform.position = new Vector3(customer.transform.position.x + 1,customer.transform.position.y + 1);
         request.transform.SetParent(customer.transform);
 
-        StartCoroutine(WaitPlease(1));
+        StartCoroutine(WaitPlease(5.0f));
         
     }
 
 
-  IEnumerator WaitPlease(float time) { //Waiting until the time runs out, and until the waitBoolean is false. 
+  IEnumerator WaitPlease(float timeToDrinkInSeconds) { //Waiting until the time runs out, and until the waitBoolean is false. 
 
        // Debug.Log(custmov.waitBoolean);
-         yield return new WaitForSeconds(time);
         yield return new WaitUntil(() => custmov.waitBoolean == false);
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(timeToDrinkInSeconds);
         custmov.waiting = false;
        
     }
@@ -54,8 +54,25 @@ public class DrinkRequest : MonoBehaviour
    //     custmov.waitBoolean = false;
   //  }
 
+      checkForDrink();
     }
 
 
+    private void checkForDrink() {
 
+      if(custmov == null)
+        return;
+      
+      Transform station = custmov.currentPosition.transform;
+      Transform table, coaster, drink;
+
+      if(station != null && 
+        (station.childCount > 0 && (table = station.GetChild(0)) != null) && 
+        (table.childCount > 0 && (coaster = table.GetChild(0)) != null) && 
+        (coaster.childCount > 0 && (drink = coaster.GetChild(0)) != null)) {
+
+          custmov.waitBoolean = false;
+          Destroy(request);
+      }
+    }
 }
