@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(DrinkRequest))] //every time we call customer movement we NEED to have drink request. Every customer needs a drink request. 
+
 public class CustomerMovement : MonoBehaviour
 {
     
@@ -13,6 +15,7 @@ public class CustomerMovement : MonoBehaviour
 // Make an individual boolean for waiting INSIDE THE NODE/STATION so that it can be modified individualistically, not just the entirety of all nodes.
 
 
+
 public Station currentPosition;
 private Station targetPosition;
 
@@ -21,13 +24,17 @@ private float neededDistance;
 [SerializeField] private float walkSpeed;
 [SerializeField] private float waitMultiplier = 1.0f;
 
-public static bool waitBoolean = false; //TO WORK ON
+public bool waitBoolean = false; //TO WORK ON
 
-private bool moving, waiting, leaving;
+private bool moving, leaving;
+public bool waiting;
+private DrinkRequest e;
 
 
 
 void Start(){
+
+e = GetComponent<DrinkRequest>();
 
 currentPosition.changeCapacity(1); 
 this.transform.position = currentPosition.transform.position; 
@@ -79,7 +86,7 @@ StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier));
 
                     foreach(Station path in currentPosition.paths) {
                         if(!path.atCapacity()) {
-                            targetPosition = path;          //Makes the target a table, and then a path? why the same one twice?
+                            targetPosition = path;          
                             currentPosition.tableOccupied = false;
 
                             currentPosition.changeCapacity(-1);
@@ -110,32 +117,41 @@ StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier));
         this.transform.position = targetPosition.transform.position;
         currentPosition = targetPosition;
 
-            //If I hit the parent, or the table/end of the paths, then the leaving variable flips. 
-             if(currentPosition.parent == null || (currentPosition.tables.Length == 0 && currentPosition.paths.Length == 0)){   
-                leaving = !leaving;  
-                waitBoolean = true;
-                }
-
-            targetPosition = null;
+              targetPosition = null;
             moving = false; 
             waiting = true;
+           
+
+            //If I hit the parent, or the table/end of the paths, then the leaving variable flips. 
+             if(currentPosition.parent == null || (currentPosition.tables.Length == 0 && currentPosition.paths.Length == 0)){   
+              //  waiting = true;
+                leaving = !leaving;  
+                waitBoolean = true;
+                e.RequestBlue();
+                }
+                else{
+                    StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier)); 
+                }
+
+          
             
+        
 
-
-        StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier)); 
+        
     }
     //End of update()
     }
 
 
-
-  IEnumerator Wait(float time) { //Waiting until the time runs out, and until the waitBoolean is false. 
+    IEnumerator Wait(float time) { //Waiting until the time runs out.
 
         
-        yield return new WaitUntil(() => waitBoolean == false);
         yield return new WaitForSeconds(time);
-        
         waiting = false;
+     
     }
+
+
+
 
 }

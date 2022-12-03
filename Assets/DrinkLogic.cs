@@ -6,6 +6,8 @@ using System.Linq;
 public class DrinkLogic : MonoBehaviour
 {
 
+    
+    public DrinkRequest drinkQue;
     public Transform hand, coaster;
     public Transform drink;
     public Animator animator;
@@ -20,7 +22,8 @@ public class DrinkLogic : MonoBehaviour
         drinkList = GameObject.FindGameObjectsWithTag("Drink").ToList();
         //Debug.Log(coasterList[0]);
         //Debug.Log(coasterList[1]);
-        
+
+        drinkQue = GetComponent<DrinkRequest>();
     }
 
 
@@ -64,6 +67,8 @@ public class DrinkLogic : MonoBehaviour
         else{  return false; } 
     }
 
+
+
     GameObject closestCoaster(){
 
         //Cycles through the list of current coasters and finds the one with the smallest distance between the hand and the coaster.
@@ -87,6 +92,17 @@ public class DrinkLogic : MonoBehaviour
         closest = drinkList[i]; 
         }}
         return closest;
+    }
+
+    public Transform closestDrinkToCustomer(){
+        //Cycles through list of current drinks and finds the one with the smallest distance between the hand and the drink. 
+        GameObject closest = drinkList[0];
+
+        for(int i = 0; i < drinkList.Count; i++){
+           if(Vector3.Distance(drinkQue.customer.transform.position, drinkList[i].transform.position) < Vector3.Distance(hand.position, closest.transform.position)){
+        closest = drinkList[i]; 
+        }}
+        return closest.transform;
     }
 
 }
