@@ -133,7 +133,7 @@ StartCoroutine(Wait(currentPosition.waitTime * waitMultiplier));
 
         } else if(currentPosition.parent == null) {
 
-            CustomerManager.Instance.RemoveCustomer(gameObject);
+            CustomerManager.instance.RemoveCustomer(gameObject);
             Destroy(gameObject);
 
         } else {

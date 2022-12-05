@@ -6,7 +6,7 @@ using System.Linq;
 public class DrinkLogic : MonoBehaviour
 {
 
-    
+    public static DrinkLogic instance;
     public PlayerMovement playerMovement;
     public DrinkRequest drinkQue;
     public Transform hand, coaster;
@@ -30,6 +30,14 @@ public class DrinkLogic : MonoBehaviour
         //Debug.Log(coasterList[1]);
 
         drinkQue = GetComponent<DrinkRequest>();
+
+         //Still wanna be sure this is active for menus
+        if (DrinkLogic.instance == null){
+            DrinkLogic.instance = this; 
+            DontDestroyOnLoad(this);
+        }
+        gameObject.SetActive(false);
+
     }
 
 

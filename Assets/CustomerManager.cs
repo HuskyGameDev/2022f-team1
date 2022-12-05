@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CustomerManager : MonoBehaviour {
 
-    public static CustomerManager Instance;
+    public static CustomerManager instance;
 
     [SerializeField] private GameObject[] customerPrefabs;
 
@@ -21,8 +21,11 @@ public class CustomerManager : MonoBehaviour {
 
     void Start() {
 
-        if (Instance == null)
-            Instance = this;
+        if (CustomerManager.instance == null){
+            CustomerManager.instance = this; 
+            DontDestroyOnLoad(this);
+        }
+        gameObject.SetActive(false);
 
         rand = new System.Random();
         delaying = false;

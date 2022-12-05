@@ -7,6 +7,21 @@ public class SpaceBarButtonManager : MonoBehaviour
 {
     public int sceneToLoad;
 
+    public static SpaceBarButtonManager instance;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //This is how it's done.
+
+        if (SpaceBarButtonManager.instance == null){
+            SpaceBarButtonManager.instance = this; 
+            DontDestroyOnLoad(this);
+        }
+        gameObject.SetActive(false);
+        
+    }
+
     //Button Functionality for the Employee Button
     public void EmployeeOnPress()
     {

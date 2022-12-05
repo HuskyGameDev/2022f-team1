@@ -19,9 +19,13 @@ public class BarManager : MonoBehaviour
     void Start()
     {
         //This is how it's done.
-        BarManager.instance = this; 
-        DontDestroyOnLoad(this);
+
+        if (BarManager.instance == null){
+            BarManager.instance = this; 
+            DontDestroyOnLoad(this);
+        }
         gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
