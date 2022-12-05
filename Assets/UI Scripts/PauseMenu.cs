@@ -34,9 +34,10 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        optionMenuUI.SetActive(false); 
-        helpMenuUI.SetActive(false);
-        nameInputField.SetActive(false);
+        //optionMenuUI.SetActive(false); 
+        //helpMenuUI.SetActive(false);
+        //nameInputField.SetActive(false);
+        BarManager.instance.gameObject.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
@@ -44,6 +45,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
+        BarManager.instance.gameObject.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
@@ -77,6 +79,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         SceneManager.LoadScene("MainMenu");
+        BarManager.instance.gameObject.SetActive(false);
     }
 
     public void LoadTextChanger()

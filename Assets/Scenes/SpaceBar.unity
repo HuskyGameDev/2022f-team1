@@ -172,8 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9425a224169553946a684b4e5d86a759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTextElement: {fileID: 254569995}
+  myMoneyTextElement: {fileID: 0}
+  myBarNameTextElement: {fileID: 0}
   moneyTracker: 0
+  nameTracker: 
 --- !u!1 &1569656
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +211,7 @@ Transform:
   m_Children:
   - {fileID: 564524063}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1569658
 MonoBehaviour:
@@ -430,7 +432,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1732255108}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonManagerScript, Assembly-CSharp
         m_MethodName: StoreOnPress
         m_Mode: 1
@@ -828,7 +830,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &215182326
 GameObject:
@@ -1216,7 +1218,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1732255108}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SpaceBarButtonScript, Assembly-CSharp
         m_MethodName: EmployeeOnPress
         m_Mode: 1
@@ -1806,50 +1808,6 @@ Transform:
   - {fileID: 393955289}
   m_Father: {fileID: 1881880205}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &639128025
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 639128027}
-  - component: {fileID: 639128026}
-  m_Layer: 0
-  m_Name: MoneyManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &639128026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639128025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b523ec93ca2b8c4d8c528580936cfff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &639128027
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639128025}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17313617, y: 0.20616016, z: -27.653051}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1800683442}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &657246381
 GameObject:
@@ -4261,7 +4219,7 @@ Transform:
   - {fileID: 128021377}
   - {fileID: 492343359}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &720436590
 GameObject:
@@ -4378,6 +4336,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 129416242}
+  optionMenuUI: {fileID: 0}
+  helpMenuUI: {fileID: 0}
+  nameInputField: {fileID: 0}
+  changeNameButton: {fileID: 0}
 --- !u!1 &797619747
 GameObject:
   m_ObjectHideFlags: 0
@@ -4620,7 +4582,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 639128026}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoneyVariableStorage, Assembly-CSharp
         m_MethodName: TempMoneyGain
         m_Mode: 1
@@ -6224,61 +6186,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1538462572
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1538462574}
-  - component: {fileID: 1538462573}
-  m_Layer: 0
-  m_Name: DrinkManager
-  m_TagString: GameController
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1538462573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1538462572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6356649f72ed80f478321442ebcf655e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}
-  drinkQue: {fileID: 0}
-  hand: {fileID: 564524063}
-  coaster: {fileID: 0}
-  drink: {fileID: 0}
-  animator: {fileID: 1569661}
-  drinkReach: 1.5
-  pickUpKey: 111
-  putDownKey: 112
-  coasterList: []
-  drinkList: []
---- !u!4 &1538462574
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1538462572}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.305985, y: -0.0034668446, z: 0.07587184}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1800683442}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1558432368
 GameObject:
   m_ObjectHideFlags: 0
@@ -6579,59 +6486,6 @@ Transform:
   m_Father: {fileID: 492343359}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1635477190
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1635477191}
-  - component: {fileID: 1635477192}
-  m_Layer: 0
-  m_Name: CustomerManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1635477191
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635477190}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1800683442}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1635477192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635477190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa082917962e5ea459eb12c53af20f4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customerPrefabs:
-  - {fileID: 6510934654540172670, guid: 940ababd3ee3deb4383a8bf44023e3b2, type: 3}
-  - {fileID: 6510934654540172670, guid: 1839fda88fee95f47bf66a95edc730f8, type: 3}
-  - {fileID: 6510934654540172670, guid: 3d96b6af0b6d6ce4480dd51c893f2058, type: 3}
-  - {fileID: 6510934654540172670, guid: 8ca1e7b255cd0ff41b75b09ec199d2ce, type: 3}
-  - {fileID: 6510934654540172670, guid: 6a6bdffc3cae01f45b09fc0d36edf02b, type: 3}
-  customerFolder: {fileID: 190485380}
-  rate: 3
-  maxOccupancy: 10
 --- !u!1 &1667837248
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,8 +6550,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9425a224169553946a684b4e5d86a759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTextElement: {fileID: 254569995}
+  myMoneyTextElement: {fileID: 0}
+  myBarNameTextElement: {fileID: 0}
   moneyTracker: 0
+  nameTracker: 
 --- !u!114 &1679728987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6886,51 +6742,6 @@ MonoBehaviour:
   waitTime: 0
   occupied: 0
   hasOccupancyCap: 1
---- !u!1 &1732255107
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1732255109}
-  - component: {fileID: 1732255108}
-  m_Layer: 0
-  m_Name: ButtonManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1732255108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732255107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ffccfb4922db0c4bbfe87557e907379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: 0
---- !u!4 &1732255109
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732255107}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6433955, y: 0.67938155, z: -25.781794}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1800683442}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1761132749
 GameObject:
   m_ObjectHideFlags: 0
@@ -6980,41 +6791,6 @@ Transform:
   m_Children:
   - {fileID: 804488058}
   m_Father: {fileID: 1881880205}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1800683441
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1800683442}
-  m_Layer: 0
-  m_Name: Handlers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1800683442
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800683441}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.55401486, y: -0.51810855, z: -0.11068738}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1732255109}
-  - {fileID: 639128027}
-  - {fileID: 1538462574}
-  - {fileID: 1635477191}
-  m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832843442
@@ -8935,7 +8711,7 @@ Transform:
   - {fileID: 606086660}
   - {fileID: 624192732}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1985634874
 GameObject:

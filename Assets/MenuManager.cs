@@ -12,6 +12,8 @@ public class MenuManager : MonoBehaviour
         gameStartScene = 0;
 
         SceneManager.LoadScene(gameStartScene);
+
+        BarManager.instance.gameObject.SetActive(true);
     }
 
     public void QuitGame(){
